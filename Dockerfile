@@ -3,8 +3,8 @@ FROM jboss/keycloak
 ENV POSTGRES_JDBC_VERSION 9.4.1211
 ENV POSTGRES_JDBC_DOWNLOAD_URL http://central.maven.org/maven2/org/postgresql/postgresql/${POSTGRES_JDBC_VERSION}/postgresql-${POSTGRES_JDBC_VERSION}.jar
 
-ADD keycloak/changeDatabase.xsl ${JBOSS_HOME}/
-ADD keycloak/supportReverseProxy.xsl ${JBOSS_HOME}/
+ADD changeDatabase.xsl ${JBOSS_HOME}/
+ADD supportReverseProxy.xsl ${JBOSS_HOME}/
 
 RUN set -x \
     && java -jar /usr/share/java/saxon.jar \
@@ -23,4 +23,4 @@ RUN set -x \
     && cd ${JBOSS_HOME}/modules/system/layers/base/org/postgresql/jdbc/main \
     && curl -Ls "${POSTGRES_JDBC_DOWNLOAD_URL}" > ${JBOSS_HOME}/modules/system/layers/base/org/postgresql/jdbc/main/postgresql.jar
 
-ADD keycloak/module.xml ${JBOSS_HOME}/modules/system/layers/base/org/postgresql/jdbc/main/
+ADD module.xml ${JBOSS_HOME}/modules/system/layers/base/org/postgresql/jdbc/main/
