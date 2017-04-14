@@ -1,6 +1,6 @@
 FROM jboss/keycloak
 
-ENV POSTGRES_JDBC_VERSION 9.4.1211
+ENV POSTGRES_JDBC_VERSION 9.4.1212
 ENV POSTGRES_JDBC_DOWNLOAD_URL http://central.maven.org/maven2/org/postgresql/postgresql/${POSTGRES_JDBC_VERSION}/postgresql-${POSTGRES_JDBC_VERSION}.jar
 
 ADD changeDatabase.xsl ${JBOSS_HOME}/
