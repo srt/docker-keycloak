@@ -2,13 +2,13 @@
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-                xmlns:ds="urn:jboss:domain:datasources:4.0">
+                xmlns:ds="urn:jboss:domain:datasources:5.0">
 
     <xsl:output method="xml" indent="yes"/>
 
     <xsl:template match="//ds:subsystem/ds:datasources/ds:datasource[@jndi-name='java:jboss/datasources/KeycloakDS']">
         <ds:datasource jndi-name="java:jboss/datasources/KeycloakDS" enabled="true" use-java-context="true" pool-name="KeycloakDS" use-ccm="true">
-            <ds:connection-url>jdbc:postgresql://${env.DB_PORT_5432_TCP_ADDR}:${env.DB_PORT_5432_TCP_PORT:5432}/${env.DB_DATABASE:keycloak}</ds:connection-url>
+            <ds:connection-url>jdbc:postgresql://${env.DB_HOST:db}:${env.DB_PORT:5432}/${env.DB_DATABASE:keycloak}</ds:connection-url>
             <ds:driver>postgresql</ds:driver>
             <ds:security>
               <ds:user-name>${env.DB_USER:keycloak}</ds:user-name>
@@ -41,4 +41,3 @@
     </xsl:template>
 
 </xsl:stylesheet>
-
